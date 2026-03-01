@@ -1,8 +1,12 @@
 # continuwuity compose config with generator
-i still have to figure out how to give the user changes to the configuration to the config.  
+i still have to figure out how to allow updating the configuration if needed. until now there was no need. 
+
 keep in mind i maintain this in my free time.  
+
 if you have any problems with this script, DM me on matrix (if possible) via https://matrix.to/#/@lukas:semda.eu or open an issue.
-i will respond as fast as possible. i use this on my own server so i will likely be able to help.  
+i will respond as fast as possible.  
+
+i use this on my own server so i will likely be able to help.  
 
 # TLDR:
 
