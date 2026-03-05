@@ -1,5 +1,5 @@
 yourdomain.tld {
-  @jwt path /jwt* 
+  @jwt path /jwt*
     handle @jwt {
       uri strip_prefix /jwt
       reverse_proxy jwt:8081
