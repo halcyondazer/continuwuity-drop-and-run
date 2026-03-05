@@ -1,7 +1,7 @@
 # continuwuity drop-and-run
 *a continuwuity compose config with generator and updater, includes MatrixRTC*
 
-![a ](logo.png)
+![a Continuwuity drop-and-run rod, has the style of a Cobalt-60 Rod](logo.png)
 
 > if you have any problems with this script, DM me on matrix (if possible) via https://matrix.to/#/@lukas:semda.eu or open an issue.
 i will respond as fast as possible.  
