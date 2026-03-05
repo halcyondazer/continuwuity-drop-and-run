@@ -1,28 +1,27 @@
-# continuwuity compose config with generator
-i still have to figure out how to allow updating the configuration if needed. until now there was no need. 
+# continuwuity drop-and-run
+*a continuwuity compose config with generator and updater, includes MatrixRTC*
 
-keep in mind i maintain this in my free time.  
+![a ](logo.png)
 
-if you have any problems with this script, DM me on matrix (if possible) via https://matrix.to/#/@lukas:semda.eu or open an issue.
+> if you have any problems with this script, DM me on matrix (if possible) via https://matrix.to/#/@lukas:semda.eu or open an issue.
 i will respond as fast as possible.  
+i use this on my own server in production  
 
-i use this on my own server so i will likely be able to help.  
+## Setup:
 
-# TLDR:
-
-1. have a domain (yourdomain.tld) and the livekit subdomain (livekit.yourdomain.tld)
+1. have a domain (yourdomain.tld)
 
 2. open your ports if needed:
 ```
 80/tcp             # http and wellknown
 443/tcp            # https
-443/udp            # i think websocket 😬
+443/udp            # websocket for livekit
 8081/tcp           # jwt service
 7880/tcp           # livekit / MatrixRCT
 7881/tcp           # livekit / MatrixRCT
 50100-50200/udp    # livekit / MatrixRCT
 ```
-*a tutorial for popular firewalls will follow*
+*a tutorial for popular firewalls might follow*
 
 3. git clone this repo:
 ```bash
@@ -35,10 +34,9 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 ```
 
-
 5. run the script:
 ```bash
-./setup.sh yourdomain.tld 
+sudo bash generate-config.sh yourdomain.tld
 ```
 *it will ask if you want to start the server using compose (should just work if previous requirements are met)*
 
@@ -54,7 +52,7 @@ sh get-docker.sh
 │   ├── LICENSE
 │   ├── README.md
 │   └── setup.sh
-└── continuwuity-yourdomain.tld-1772130249
+└── continuwuity-yourdomain.tld
     ├── Caddyfile
     ├── compose.yml
     ├── continuwuity.toml
@@ -63,10 +61,17 @@ sh get-docker.sh
 
 ```
 
+## Backup & Updating
+**Note: for configurations after the 05.03.2026 only**  
+
+this makes a backup and creates a new config  
+```bash
+git pull
+sudo bash update-config.sh yourdomain.tld
+```
+
 ---
 
 parts and ideas based on https://github.com/linkpy/c10y-livekit-docker-compose  
 Thank you Kaesa, probably would still guess without your help  
-trans right are human rights🏳️‍⚧️  
-
-
+trans right are human rights🏳️‍⚧️

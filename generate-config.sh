@@ -7,7 +7,7 @@ if [[ -z "$1" ]]; then
 fi
 
 CONF_DIR=../continuwuity-$1
-BACKUPDIR=$CONF_DIR.backup-$(date +%Y-%M-%d-%s)
+BACKUPDIR="$CONF_DIR.backup-$(date +%Y-%M-%d-%s)
 
 cp -r continuwuity-skeleton $CONF_DIR
 
