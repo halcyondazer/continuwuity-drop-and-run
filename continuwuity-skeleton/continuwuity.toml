@@ -190,7 +190,7 @@ server = "yourdomain.tld:443"
 # To disable, set this to be an empty vector (`[]`).
 #
 rtc_focus_server_urls = [
-    { type = "livekit", livekit_service_url = "https://livekit.yourdomain.tld" },
+    { type = "livekit", livekit_service_url = "https://yourdomain.tld/jwt" },
 ]
 
 ### continuwuity Configuration

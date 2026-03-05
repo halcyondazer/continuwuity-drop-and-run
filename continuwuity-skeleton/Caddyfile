@@ -1,10 +1,20 @@
 yourdomain.tld {
-  reverse_proxy homeserver:6167
-}
-livekit.yourdomain.tld {
-  @jwt path /sfu/get* /healthz* /get_token*
-    route @jwt {
+  @jwt path /jwt* 
+    handle @jwt {
+      uri strip_prefix /jwt
       reverse_proxy jwt:8081
     }
-    reverse_proxy livekit:7880
+  @livekit path /sfu*
+    handle @livekit {
+      uri strip_prefix /sfu
+      reverse_proxy livekit:7880
+    }
+  @hs {
+    path /.well-known/matrix*
+    path /_matrix*
+    path /*
+  }
+  route @hs {
+    reverse_proxy homeserver:6167
+  }
 }
