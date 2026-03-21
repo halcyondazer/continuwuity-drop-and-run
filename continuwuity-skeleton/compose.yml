@@ -11,7 +11,7 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ./caddy/data:/data
       - ./caddy/config:/config
-  
+
   homeserver:
     image: forgejo.ellis.link/continuwuation/continuwuity:latest-maxperf
     restart: unless-stopped
@@ -20,11 +20,23 @@ services:
       - /etc/resolv.conf:/etc/resolv.conf:ro
       - ./continuwuity.toml:/etc/continuwuity.toml
     environment:
-      CONTINUWUITY_CONFIG: '/etc/continuwuity.toml'
+      CONTINUWUITY_CONFIG: "/etc/continuwuity.toml"
     ulimits:
       nofile:
         soft: 1048567
         hard: 1048567
+
+  # draupnir:
+  #   image: gnuxie/draupnir:latest
+  #   hostname: draupnir
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./draupnir/config:/data/config:ro
+  #     - ./draupnir/data:/data/storage
+  #   command: bot --draupnir-config /data/config/production.yaml
+  #   depends_on:
+  #     homeserver:
+  #       condition: service_started
 
   jwt:
     image: ghcr.io/element-hq/lk-jwt-service:latest
@@ -45,5 +57,5 @@ services:
       - "50100-50200:50100-50200/udp"
 
 volumes:
-    db:
-    acme:
+  db:
+  acme:
